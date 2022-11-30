@@ -5,7 +5,9 @@
 
 /* Default components which you can use in your app. */
 @layer components {
-
+    .text-highlight-gradient {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-blue-700;
+    }
 }
 
 /* Default style for html elements (like h1, h2, p, etc.). */
