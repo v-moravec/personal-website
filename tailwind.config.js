@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         'jagu-orange': '#F89815',
+        'jagu-blue': '#21368B',
+        'fit-ctu-blue': '#007AC2',
+        'ld-seating-gray': '#696969'
       },
       container: {
         padding: {

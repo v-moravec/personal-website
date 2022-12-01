@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen relative overflow-x-hidden">
+  <div class="relative h-[500px] w-[500px] 2xl:h-[800px] 2xl:w-[800px] max-w-[95vw] max-h-[95vw]">
     <div v-if="loading" class="loading">
       <h1>Loading</h1>
       <div class="loading-circle">
@@ -33,8 +33,8 @@ export default {
   data () {
     return {
       sizes: {
-        width: document.body.clientWidth,
-        height: window.innerHeight
+        width: 800,
+        height: 800
       },
       material: null,
       ambientLight: null
@@ -71,10 +71,28 @@ export default {
     /**
      * Resize handler
      */
+    if(document.body.clientWidth < 500) {
+      this.sizes.width = document.body.clientWidth
+      this.sizes.height = document.body.clientWidth
+    } else if(document.body.clientWidth < 1536) {
+      this.sizes.width = 500
+      this.sizes.height = 500
+    } else {
+      this.sizes.width = 800
+      this.sizes.height = 800
+    }
 
     window.addEventListener('resize', () => {
-      this.sizes.width = document.body.clientWidth
-      this.sizes.height = window.innerHeight
+      if(document.body.clientWidth < 500) {
+        this.sizes.width = document.body.clientWidth
+        this.sizes.height = document.body.clientWidth
+      } else if(document.body.clientWidth < 1536) {
+        this.sizes.width = 500
+        this.sizes.height = 500
+      } else {
+        this.sizes.width = 800
+        this.sizes.height = 800
+      }
 
       camera.aspect = this.sizes.width / this.sizes.height
       camera.updateProjectionMatrix()
@@ -91,11 +109,6 @@ export default {
     camera.position.x = -9.6
     camera.position.y = 6.85
     camera.position.z = 9.4
-    if (document.body.clientWidth < 800) {
-      camera.position.x = -12.7
-      camera.position.y = 9.08
-      camera.position.z = 12.46
-    }
     this.scene.add(camera)
 
     // Controls
