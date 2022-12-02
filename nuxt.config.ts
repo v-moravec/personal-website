@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   // TODO: Change to desired target - static/server, ssr: true/false.
   //       Keep ssr: true if you are using SSG to generate HTML - otherwise app is going to be client side only.
-  ssr: false,
+  ssr: true,
   modules: [
     '@nuxtjs/tailwindcss'
   ],
